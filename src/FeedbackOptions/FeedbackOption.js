@@ -1,19 +1,15 @@
 import React from 'react';
+import Button from "../Button"
+import {Container} from "./FeedbackOptionStyledComponent"
 
 export default function FeedbackOption({ options, onButtonClick }) {
   const [good, neutral, bad] = options;
 
   return (
-    <section>
-      <button type="button" onClick={() => onButtonClick( good )}>
-        Good
-      </button>
-      <button type="button" onClick={() => onButtonClick( neutral )}>
-        Neutral
-      </button>
-      <button type="button" onClick={() => onButtonClick( bad )}>
-        Bad
-      </button>
-    </section>
+    <Container>
+        <Button name = {good} callBack ={onButtonClick}/>
+        <Button name = {neutral} callBack ={onButtonClick}/>
+        <Button name = {bad} callBack ={onButtonClick}/>
+    </Container>
   );
 }

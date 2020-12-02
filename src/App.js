@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Section from './Section';
-import FeedbackOption from './FeedbackOptions'
+import FeedbackOption from './FeedbackOptions';
 
 export default class App extends Component {
   state = {
@@ -10,10 +10,11 @@ export default class App extends Component {
     bad: 0,
   };
 
-  handleButtonClick = feedback => {
-      console.log(feedback);
+  handleButtonClick = e => {
+      const {name} = e.target;
+    console.log(name);
     this.setState(prevState => {
-      return { [feedback]: prevState[feedback] + 1 };
+      return { [name]: prevState[name] + 1 };
     });
   };
 
@@ -33,11 +34,11 @@ export default class App extends Component {
       feedbackTotal,
     );
     return (
-      <Section title = 'Please leave feedback'>
-          <FeedbackOption 
-          options = {["good", "neutral", "bad"]}
-          onButtonClick = {this.handleButtonClick}
-          />
+      <Section title="Please leave feedback">
+        <FeedbackOption
+          options={['good', 'neutral', 'bad']}
+          onButtonClick={this.handleButtonClick}
+        />
         {/* <h2>Please Leave feedback</h2> */}
         {/* <section>
           <button type="button" onClick={() => this.handleButtonClick('good')}>
@@ -77,7 +78,6 @@ export default class App extends Component {
             </ul>
           )}
         </section>
-
       </Section>
     );
   }
