@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Section from './Section';
 import FeedbackOption from './FeedbackOptions';
+import Statistics from './Statistics';
+
+
 
 export default class App extends Component {
   state = {
@@ -20,7 +23,6 @@ export default class App extends Component {
 
   countTotalFeedback = () => {
     return Object.values(this.state).reduce((acc, item) => acc + item, 0);
-    //   console.log(total.reduce((acc, item ) => acc + item, 0));
   };
 
   countPositiveFeedbackPercentage = total => {
@@ -39,22 +41,14 @@ export default class App extends Component {
           options={['good', 'neutral', 'bad']}
           onButtonClick={this.handleButtonClick}
         />
-        {/* <h2>Please Leave feedback</h2> */}
+        <Statistics 
+        feedbackTotal={feedbackTotal}
+        feedbackPercentage={feedbackPercentage}
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        />
         {/* <section>
-          <button type="button" onClick={() => this.handleButtonClick('good')}>
-            Good
-          </button>
-          <button
-            type="button"
-            onClick={() => this.handleButtonClick('neutral')}
-          >
-            Neutral
-          </button>
-          <button type="button" onClick={() => this.handleButtonClick('bad')}>
-            Bad
-          </button>
-        </section> */}
-        <section>
           <h2>Statistics</h2>
           {!feedbackTotal ? (
             <p>No feedback given</p>
@@ -77,7 +71,7 @@ export default class App extends Component {
               </li>
             </ul>
           )}
-        </section>
+        </section> */}
       </Section>
     );
   }
