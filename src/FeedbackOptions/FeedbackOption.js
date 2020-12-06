@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from "../Button"
-import {Container} from "./FeedbackOptionStyledComponent"
+import {Container} from "./FeedbackOptionStyledComponent";
 
-export default function FeedbackOption({ options, onButtonClick }) {
+
+function FeedbackOption({ options, onButtonClick }) {
   const [good, neutral, bad] = options;
 
   return (
@@ -13,3 +15,15 @@ export default function FeedbackOption({ options, onButtonClick }) {
     </Container>
   );
 }
+
+FeedbackOption.defaultProps = {
+  options: ['good', 'neutral', 'bad'],
+};
+
+FeedbackOption.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+  onLeaveFeedback: PropTypes.func,
+};
+
+
+export default FeedbackOption;

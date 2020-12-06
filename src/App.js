@@ -4,8 +4,6 @@ import Section from './Section';
 import FeedbackOption from './FeedbackOptions';
 import Statistics from './Statistics';
 
-
-
 export default class App extends Component {
   state = {
     good: 0,
@@ -14,8 +12,7 @@ export default class App extends Component {
   };
 
   handleButtonClick = e => {
-      const {name} = e.target;
-    console.log(name);
+    const { name } = e.target;
     this.setState(prevState => {
       return { [name]: prevState[name] + 1 };
     });
@@ -41,37 +38,13 @@ export default class App extends Component {
           options={['good', 'neutral', 'bad']}
           onButtonClick={this.handleButtonClick}
         />
-        <Statistics 
-        feedbackTotal={feedbackTotal}
-        feedbackPercentage={feedbackPercentage}
-        good={good}
-        neutral={neutral}
-        bad={bad}
+        <Statistics
+          feedbackTotal={feedbackTotal}
+          feedbackPercentage={feedbackPercentage}
+          good={good}
+          neutral={neutral}
+          bad={bad}
         />
-        {/* <section>
-          <h2>Statistics</h2>
-          {!feedbackTotal ? (
-            <p>No feedback given</p>
-          ) : (
-            <ul>
-              <li>
-                Good: <span>{good}</span>
-              </li>
-              <li>
-                Neutral: <span>{neutral}</span>
-              </li>
-              <li>
-                Bad: <span>{bad}</span>
-              </li>
-              <li>
-                Total: <span>{feedbackTotal}</span>
-              </li>
-              <li>
-                Positive feedback: <span>{feedbackPercentage} %</span>
-              </li>
-            </ul>
-          )}
-        </section> */}
       </Section>
     );
   }

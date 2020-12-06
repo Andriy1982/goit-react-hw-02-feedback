@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Description} from './NotificationStyledComponent'
 
-export default function Notification({message}) {
+function Notification({message}) {
     return (
         <Description>
             {message}
@@ -9,3 +10,12 @@ export default function Notification({message}) {
     )
 }
 
+Notification.defaultProps = {
+    message: "No feedback given",
+};
+
+Notification.propTypes = {
+    message: PropTypes.string.isRequired,
+};
+
+export default Notification;
