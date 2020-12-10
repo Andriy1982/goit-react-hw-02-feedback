@@ -21,12 +21,12 @@ export default class Statistic extends Component {
       bad,
       neutral,
     } = this.props;
-    return (
-      <section>
-        <Title>Statistics</Title>
-        {!feedbackTotal ? (
-          <Notification message="No feedback given" />
-        ) : (
+
+    if (!feedbackTotal) return <Notification message="No feedback given" />;
+    else
+      return (
+        <section>
+          <Title>Statistics</Title>
           <List>
             <ListItem>
               Good: <span>{good}</span>
@@ -44,8 +44,7 @@ export default class Statistic extends Component {
               Positive feedback: <span>{feedbackPercentage} %</span>
             </ListItem>
           </List>
-        )}
-      </section>
-    );
+        </section>
+      );
   }
 }
